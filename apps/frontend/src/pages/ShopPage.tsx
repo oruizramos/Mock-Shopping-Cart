@@ -13,7 +13,13 @@ const ShopPage: React.FC = () => {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/products`);
+        // Remove trailing slashes from env var just in case
+        const backendUrl = import.meta.env.VITE_BACKEND_URL.replace(/\/+$/, "");
+        const fullUrl = `${backendUrl}/products`;
+
+        console.log("Fetching products from:", fullUrl);
+
+        const response = await fetch(fullUrl);
 
         if (!response.ok) {
           throw new Error("Failed to fetch products");
