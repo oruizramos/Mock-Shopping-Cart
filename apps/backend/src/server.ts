@@ -1,13 +1,18 @@
 import express from "express";
 import cors from "cors";
 import productsRouter from "./routes/products";
-import { initializeDb } from "./db/database"; 
+import { initializeDb } from "./db/database";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Middleware
-app.use(cors());
+// CORS Configuration
+app.use(cors({
+  origin: "https://mock-shopping-app.netlify.app/", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Root route - simple status message
