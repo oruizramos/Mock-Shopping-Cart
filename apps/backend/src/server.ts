@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 4000;
 
 // CORS Configuration
 app.use(cors({
-  origin: "https://mock-shopping-app.netlify.app/", 
+  origin: "https://mock-shopping-app.netlify.app", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
